@@ -1,10 +1,12 @@
 name: Create OctoAcme README PR
+
 on:
   workflow_dispatch:
     inputs:
       issue_number:
         description: 'Número da issue para referenciar no PR (ex: 2). Opcional.'
         required: false
+
 jobs:
   create-pr:
     runs-on: ubuntu-latest
@@ -21,7 +23,7 @@ jobs:
           cat > docs/README.md <<'EOF'
 # Documentação de Gerenciamento de Projetos da OctoAcme
 
-Esta pasta reúne os documentos de processo, templates e checklists da OctoAcme para ajudar as equipes a entregar de forma previsível e com qualidade. Em resumo: os projetos começam com um One‑pager (resumo do projeto) para capturar o problema, objetivos, métricas de sucesso, stakeholders, cronograma e riscos iniciais. Iniciativas aprovadas avançam para o planejamento, onde o trabalho é desconstruído em incrementos testáveis, critérios de aceitação são definidos, dependências identificadas e um plano de release/marcos é criado.
+Esta pasta reúne os documentos de processo, templates e checklists da OctoAcme para ajudar as equipes a entregar de forma previsível e com qualidade. Em resumo: os projetos começam com um One-pager (resumo do projeto) para capturar o problema, objetivos, métricas de sucesso, stakeholders, cronograma e riscos iniciais. Iniciativas aprovadas avançam para o planejamento, onde o trabalho é desconstruído em incrementos testáveis, critérios de aceitação são definidos, dependências identificadas e um plano de release/marcos é criado.
 
 A execução segue um ritmo estabelecido (daily standups curtos, syncs semanais de entrega, demos ao fim de iterações/marcos) e é acompanhada em um quadro de projeto com estados visíveis (Backlog → Ready → In Progress → In Review → QA → Done). O fluxo de pull requests privilegia PRs pequenos, descrição com link para a issue e critérios de aceite, checagens automáticas em CI (testes, lint, scanner de segurança) e pelo menos uma aprovação antes do merge. Papéis são explícitos: Product Manager define resultados e prioridade; Project Manager coordena plano, riscos e comunicação; Desenvolvedores constroem e testam; QA valida qualidade; Stakeholders dão inputs e aprovações.
 
@@ -48,9 +50,9 @@ EOF
           body: |
             Adiciona docs/README.md com uma visão concisa dos processos de gerenciamento de projetos da OctoAcme e links para os documentos detalhados nesta pasta.
 
-            Resumo: iniciação (one‑pagers), planejamento (backlog, DoD, plano de release), execução (estados do quadro, fluxo de PR, cadência), riscos & comunicação (registro de riscos, status semanal, escalonamento), gates de release (CI, smoke tests, rollback), e melhoria contínua (retrospectivas → backlog).
+            Resumo: iniciação (one-pagers), planejamento (backlog, DoD, plano de release), execução (estados do quadro, fluxo de PR, cadência), riscos & comunicação (registro de riscos, status semanal, escalonamento), gates de release (CI, smoke tests, rollback), e melhoria contínua (retrospectivas → backlog).
 
             Relacionado à issue: ${{ github.event.inputs.issue_number || '' }}
           base: main
-          labels: documentation,process-improvement
-          reviewers: marcosvmlopes
+          labels: 'documentation,process-improvement'
+          reviewers: 'marcosvmlopes'
